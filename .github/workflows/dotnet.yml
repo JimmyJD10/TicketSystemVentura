@@ -1,0 +1,34 @@
+name: Build and Deploy .NET Application
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta automáticamente cuando se suben cambios a main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+      
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'  # Usa la versión que tienes (9.0)
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build application
+      run: dotnet build --configuration Release --no-restore
+    
+    - name: Publish application
+      run: dotnet publish TicketSystemVentura.API/TicketSystemVentura.API.csproj --configuration Release --output ./published --no-build
+    
+    - name: Upload published artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: published-app
+        path: ./published
