@@ -7,9 +7,9 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 COPY ["TicketSystemVentura.API/TicketSystemVentura.API.csproj", "TicketSystemVentura.API/"]
-COPY ["TicketSystemVentura.Application/TicketSystemVentura.Application.csproj", "TicketSystemVentura.Application/"]
-COPY ["TicketSystemVentura.Domain/TicketSystemVentura.Domain.csproj", "TicketSystemVentura.Domain/"]
-COPY ["TicketSystemVentura.Infrastructure/TicketSystemVentura.Infrastructure.csproj", "TicketSystemVentura.Infrastructure/"]
+COPY ["TicketSystem.Application/TicketSystem.Application.csproj", "TicketSystem.Application/"]
+COPY ["TicketSystem.Domain/TicketSystem.Domain.csproj", "TicketSystem.Domain/"]
+COPY ["TicketSystem.Infrastructure/TicketSystem.Infrastructure.csproj", "TicketSystem.Infrastructure/"]
 
 RUN dotnet restore "TicketSystemVentura.API/TicketSystemVentura.API.csproj"
 
