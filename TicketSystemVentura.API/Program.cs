@@ -25,13 +25,14 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
+// Habilitar Swagger en Development y Production
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ticket System API v1");
-        c.RoutePrefix = string.Empty; // Swagger en la raíz (http://localhost:5000/)
+        c.RoutePrefix = string.Empty; // Swagger en la raíz
     });
 }
 
